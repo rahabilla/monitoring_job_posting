@@ -1,68 +1,57 @@
-Skill-Based Job Monitoring & Clustering Tool
-This project is designed to automatically fetch job listings from karkidi.com, group them based on required skillsets using unsupervised learning techniques, and notify users when new postings align with their interests.
+Job Monitoring and Skill-Based Clustering System
+This project automatically scrapes job postings from karkidi.com, clusters them according to the required skills using unsupervised machine learning, and notifies users when new job opportunities match their skill interests.
 
- Key Highlights
-Extracts job-related details such as title, company, skills, and location from karkidi.com
+ Features
+Scrapes the latest job postings including job title, company, location, and required skills
 
-Applies K-Means clustering to TF-IDF-transformed skill descriptions
+Clusters jobs by applying K-Means on TF-IDF vectors derived from required skills
 
-Saves the trained model for future use in classifying incoming job data
+Saves the trained model for reuse in classifying new postings
 
-Lets users subscribe to clusters based on their preferred skills to receive updates
+Allows users to select skill-based clusters to receive personalized job alerts
 
-Supports automated scraping on a scheduled basis using tools like cron
+Supports automated daily scraping through schedulers like cron or APScheduler
 
-Includes an interactive Streamlit dashboard to browse and filter job postings
+Provides a Streamlit dashboard for interactive exploration of job listings
 
- Information Collected
-Each job entry includes the following:
+Data Collected
+Each job record contains the following details:
 
-Position title
+Job Title
 
-Organization name
+Company Name
 
-Skill requirements
+Required Skills
 
-Location (where available)
+Location (when available)
 
- Clustering Pipeline
-Text Cleaning & Preprocessing: Skill text is cleaned, tokenized, and converted to TF-IDF vectors
+Clustering Workflow
+Preprocessing: Clean the skills text, tokenize, and vectorize using TF-IDF
 
-Clustering: Jobs are grouped by similar skills using the K-Means algorithm
+Clustering: Group jobs based on their skill vectors using K-Means
 
-Assessment: Silhouette score and manual inspection are used to validate cluster quality
+Evaluation: Performance assessed via silhouette score and manual review
 
-Job Matching: Clusters are linked to user-selected skill sets for notification purposes
+Matching: User skill preferences are mapped to clusters to trigger alerts
 
- Setup Instructions
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/job-clustering-dashboard.git
-cd job-clustering-dashboard
-pip install -r requirements.txt
- How to Launch the Dashboard
-bash
-Copy
-Edit
-streamlit run app.py
-If the file karkidi_jobs.csv isn't present locally, the dashboard includes an uploader to manually load data.
+Running the Dashboard
+If the file karkidi_jobs.csv is not available locally, use the file uploader feature to upload the dataset and launch the dashboard via Streamlit.
 
- Optional Automation
-Use task schedulers like cron, schedule, or APScheduler to automate:
+ Automation (Optional)
+Utilize tools such as cron, APScheduler, or schedule to automate:
 
-The scraping process (scraper.py)
+Daily scraping (via scraper.py)
 
-Classification and alert generation
+Classification and sending alerts
 
- Tech Stack & Dependencies
-Refer to requirements.txt for the complete list. Key packages used:
+Requirements
+For all necessary dependencies, refer to the requirements.txt file, which includes but is not limited to:
 
 streamlit
 
-scikit-learn
-
 pandas
+
+scikit-learn
 
 nltk
 
@@ -70,9 +59,9 @@ beautifulsoup4
 
 joblib
 
- Potential Enhancements
-Enable email-based notifications for matched jobs
+Future Improvements
+Integration of email alerts
 
-Implement smarter skill extraction techniques
+Implementation of smart keyword extraction for enhanced clustering
 
-Normalize job titles using NLP-based approaches
+NLP-based normalization of job titles
